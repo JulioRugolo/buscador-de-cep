@@ -10,15 +10,22 @@
 </head>
 <body>
   <header>
-    <h1>Pesquise a rua pelo CEP!</h1>
-    <h4>Digite o cep (xxxxx-xxx) no campo abaixo!</h4>
+    <h1 id="title">Pesquise a rua pelo CEP!</h1>
+    <p id="subtitle">Digite o cep (xxxxx-xxx) no campo abaixo!</p>
   </header>
   <main>
     <form action="">
-      <input type="text" name="cep" id="cepNumber">
+      <input type="text" name="cep" id="cepNumber" placeholder="00000-000">
       <button type="submit" id="button">Localizar CEP!</button>
     </form>
-    <div id="result"></div>
+    <div id="result">
+      <div id="logradouro"></div>
+      <div id="bairro"></div>
+      <div id="cidade"></div>
+      <div id="estado"></div>
+      <div id="cep"></div>
+    </div>
   </main>
+  <footer>Desenvolvido por Julio Rugolo</footer>
 </body>
 </html>
