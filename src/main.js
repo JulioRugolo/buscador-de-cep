@@ -14,13 +14,22 @@ async function getCep() {
   try {
     const result = await fetch(`https://viacep.com.br/ws/${input}/json/`);
     const data = await result.json();
-    rua.innerHTML = `<span>Rua:</span> ${data.logradouro}`;
-    bairro.innerHTML = `<span>Bairro:</span> ${data.bairro}`;
-    cidade.innerHTML = `<span>Cidade:</span> ${data.localidade}`;
-    estado.innerHTML = `<span>Estado:</span> ${data.uf}`;
-    cep.innerHTML = `<span>Cep:</span> ${data.cep}`;
-    resultado.style.visibility = 'visible';
-    return;
+    if(data.logradoura) {
+      rua.innerHTML = `<span>Rua:</span> ${data.logradouro}`;
+      bairro.innerHTML = `<span>Bairro:</span> ${data.bairro}`;
+      cidade.innerHTML = `<span>Cidade:</span> ${data.localidade}`;
+      estado.innerHTML = `<span>Estado:</span> ${data.uf}`;
+      cep.innerHTML = `<span>Cep:</span> ${data.cep}`;
+      resultado.style.visibility = 'visible';
+      return;
+    } else {
+      Swal.fire({
+      title: 'CEP não encontrado',
+      text: 'Tente novamente!',
+      icon: 'error',
+      confirmButtonText: 'Ok!',
+    });
+    }
   } catch (error) {
     Swal.fire({
       title: 'CEP não encontrado',
