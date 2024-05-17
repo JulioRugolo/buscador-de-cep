@@ -14,7 +14,7 @@ async function getCep() {
   try {
     const result = await fetch(`https://viacep.com.br/ws/${input}/json/`);
     const data = await result.json();
-    if(data.logradoura) {
+    if(data.logradouro) {
       rua.innerHTML = `<span>Rua:</span> ${data.logradouro}`;
       bairro.innerHTML = `<span>Bairro:</span> ${data.bairro}`;
       cidade.innerHTML = `<span>Cidade:</span> ${data.localidade}`;
