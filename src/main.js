@@ -10,6 +10,7 @@ const estado = document.getElementById('estado');
 const cep = document.getElementById('cep');
 
 async function getCep() {
+    resultado.style.display = 'none'
   const input = document.getElementById('cepNumber').value;
   try {
     const result = await fetch(`https://viacep.com.br/ws/${input}/json/`);
