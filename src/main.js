@@ -1,13 +1,7 @@
 import './style.css';
 import Swal from 'sweetalert2';
 
-const resultado = document.getElementById('result');
 const button = document.getElementById('button');
-const rua = document.getElementById('logradouro');
-const bairro = document.getElementById('bairro');
-const cidade = document.getElementById('cidade');
-const estado = document.getElementById('estado');
-const cep = document.getElementById('cep');
 const cepInput = document.getElementById('cepNumber');
 
 async function getCep() {
@@ -31,17 +25,22 @@ async function getCep() {
       throw new Error('CEP não encontrado');
     }
 
-    rua.innerHTML = `<span>Rua:</span> ${data.logradouro}`;
-    bairro.innerHTML = `<span>Bairro:</span> ${data.bairro}`;
-    cidade.innerHTML = `<span>Cidade:</span> ${data.localidade}`;
-    estado.innerHTML = `<span>Estado:</span> ${data.uf}`;
-    cep.innerHTML = `<span>CEP:</span> ${data.cep}`;
-
-    resultado.style.display = 'flex';
+    Swal.fire({
+      title: 'Resultado da Busca',
+      html: `
+        <p><strong>Rua:</strong> ${data.logradouro}</p>
+        <p><strong>Bairro:</strong> ${data.bairro}</p>
+        <p><strong>Cidade:</strong> ${data.localidade}</p>
+        <p><strong>Estado:</strong> ${data.uf}</p>
+        <p><strong>CEP:</strong> ${data.cep}</p>
+      `,
+      icon: 'success',
+      confirmButtonText: 'Ok!',
+    });
   } catch (error) {
     Swal.fire({
       title: 'Erro',
-      text: error.message || 'Não foi possível buscar o CEP. Tente novamente!',
+      text: 'Não foi possível buscar o CEP. Tente novamente!',
       icon: 'error',
       confirmButtonText: 'Ok!',
     });
@@ -50,6 +49,5 @@ async function getCep() {
 
 button.addEventListener('click', (event) => {
   event.preventDefault();
-  resultado.style.display = 'none';
   getCep();
 });
