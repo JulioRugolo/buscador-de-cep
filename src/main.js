@@ -21,7 +21,7 @@ async function getCep() {
       cidade.innerHTML = `<span>Cidade:</span> ${data.localidade}`;
       estado.innerHTML = `<span>Estado:</span> ${data.uf}`;
       cep.innerHTML = `<span>Cep:</span> ${data.cep}`;
-      resultado.style.visibility = 'visible';
+      resultado.style.display = 'flex';
       return;
     } else {
       Swal.fire({
